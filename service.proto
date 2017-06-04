@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package maracuya;
+
+service Maracuya {
+    rpc take(TakeParams) returns (TakeResult){}
+}
+
+message TakeParams {
+    required string type = 1;
+    required string id = 2;
+    optional int32 amount = 3;
+}
+
+message TakeResult {
+    required bool allowed = 1;
+}

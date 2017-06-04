@@ -1,0 +1,8 @@
+{
+    "customers": {
+        "perInterval": 2,
+        "interval": 1000,
+        "capacity": 2
+    }
+}
+
