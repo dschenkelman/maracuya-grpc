@@ -10,5 +10,5 @@ const startServer = require('..');
 
 startServer({ 
     configFilePath: process.env.MARACUYA_CONFIG,
-    address: process.env.ADDRESS
+    address: `0.0.0.0:${process.env.MARACUYA_PORT}`
 });

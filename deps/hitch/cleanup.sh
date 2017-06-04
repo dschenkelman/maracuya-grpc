@@ -1,3 +1,3 @@
-# cleanup
+#!/bin/sh
 cd /
 rm -rf /tmp/*
