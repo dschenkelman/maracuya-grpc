@@ -9,7 +9,7 @@ npm install maracuya-grpc
 ## Usage
 As a library:
 ```node
-const startServer = require('maracuya');
+const startServer = require('maracuya-grpc');
 
 startServer({ 
     configFilePath: './maracuya-config-file.json',
