@@ -45,6 +45,7 @@ COPY package.json package-lock.json /app/maracuya/
 RUN npm install --production
 COPY ./index.js service.proto /app/maracuya/
 COPY ./bin/* /app/maracuya/bin/
+COPY ./deps/maracuya-config.json /app/maracuya/bin/
 
 ENV MARACUYA_CONFIG /app/maracuya/bin/maracuya-config.json
 
