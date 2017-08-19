@@ -30,9 +30,6 @@ RUN useradd -d /var/lib/hitch -ms /bin/bash hitch
 RUN mkdir /app/hitch
 COPY ./deps/hitch/start.sh /app/hitch
 RUN chmod +x /app/hitch/start.sh
-# RUN chown hitch /app/hitch/start.sh
-
-EXPOSE 4433
 
 # up to here, we have set up hitch as a TLS terminator inside the docker image
 # now we will set up maracuya-grpc as a service
@@ -43,7 +40,6 @@ ENV MARACUYA_PORT 50001
 
 RUN useradd -ms /bin/bash maracuya
 
-# USER maracuya
 WORKDIR /app/maracuya
 COPY package.json package-lock.json /app/maracuya/
 RUN npm install --production
@@ -53,6 +49,11 @@ COPY ./bin/* /app/maracuya/bin/
 ENV MARACUYA_CONFIG /app/maracuya/bin/maracuya-config.json
 
 WORKDIR /app
-# USER supervisor
+
+# configure hitch port
+ARG port=4433
+ENV HITCH_PORT $port
+EXPOSE $port
+
 # start supervisord
 CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf -n
